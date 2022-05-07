@@ -1,0 +1,31 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "website project for cps593-03",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lieb38/Website.git"
+  },
+  "keywords": [
+    "Lieb"
+  ],
+  "author": "Lieb Mathieson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lieb38/Website/issues"
+  },
+  "homepage": "https://github.com/Lieb38/Website#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

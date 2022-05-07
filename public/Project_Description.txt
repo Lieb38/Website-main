@@ -1,0 +1,17 @@
+﻿Lieb Mathieson   |   Project Description   |   CPS593-01 w/ Kaitlin Hoffmann
+February 24th, 2022
+
+
+I intend to make a personal website. The purpose of this website will be to display a public portfolio of my creative & programming projects. The website should display images organized by medium and/or date through a clean and clear menu system with sub-directories. 
+Aside from hosting a digital portfolio of my creative work, I would also like the website to be able to present the various programming projects I hope to complete during my education at Suny New Paltz and onwards.
+The website should have a submission system with administrator access. That way anytime I would like to add an image or project to the site I can simply log in and upload a file.
+Lastly, I want the website to link to my social media with buttons, have a contact form that links to my email, and have a brief about-me section that includes my resume. 
+
+
+I hope to add more features as time goes on and I learn of new possibilities.
+
+
+
+
+Thank you,
+Lieb Mathieson

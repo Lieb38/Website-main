@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Home</title>
+</head>
+<body>
+     <div class="row">  
+         <div class="columna">
+            <header>
+               
+                    <h1>Lieb Mathieson</h1>
+                    
+              
+                <!-- Nav -->
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a class="dropdown" href="#projects">Projects</a>
+                            <ul class="content">
+                                <li><a href="#project1">project 1</a></li>
+                                <li><a href="#project2">project 2</a></li>
+                                <li><a href="#project3">project 3</a></li>
+                                <li><a href="#project4">project 4</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#works">works</a></li>
+                        <li><a href="questions.html">questions</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <footer>
+                <h3>Lieb Mathieson &reg;</h3>
+                <div class="active">
+                <a class="login" href="register.html">sign in</a>
+                <li id="logout">logout</li>
+                </div>
+            </footer>
+          </div> <!--  end of column a -->
+         
+        
+
+        <div class="columnb"> <!-- beginning column 2 -->
+           <main> <!-- Main Sections -->
+                    <!-- Form -->
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <h1> Upload Image</h1>
+                        <p>Select image to upload:</p>
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <br>
+                        <label for="title"><b>title</b></label>
+                        <br>
+                        <input type="text" placeholder="title" name="title" required>
+                        <br>
+                        <label for="date"><b>date</b></label>
+                        <br>
+                        <input type="date" name="date" required>
+                        <br>
+                        <label for="medium"><b>Medium</b></label>
+                        <br>
+                        <input type="radio" id="oil" name="medium" value="Oil on canvas">
+                        <label for="oil">Oil on canvas</label><br>
+                        <input type="radio" id="pencil" name="medium" value="colored pencil">
+                        <label for="pencil">colored pencil</label><br>
+                        <input type="submit" value="Upload Image" name="submit">
+                    </form>
+            </main>
+        </div>
+    </div> 
+</body>
+</html>
