@@ -1,6 +1,6 @@
 import 
 { fetchData, getCurrentUser, setCurrentUser, removeCurrentUser } 
-from './main.js'
+from "./main.js"
 
 const loginForm = document.getElementById("login-form");
 if(loginForm) loginForm.addEventListener('submit', login);
@@ -34,7 +34,7 @@ function register(e) {
   const name = document.getElementById("username").value;
   const pswd = document.getElementById("pswd").value;
   
-  postData('/users/register', {username: name, password: pswd})
+  postData('http://localhost:3000/users/register', {username: name, password: pswd}) // or '/users/register'
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data) // new

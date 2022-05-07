@@ -1,3 +1,71 @@
+const nav = document.querySelector('nav');
+if(getCurrentUser()) {
+  footer.innerHTML = `
+  <ul>
+   <h3>Lieb Mathieson &reg;</h3>
+   <li><a href="profile.html">Profile</a></li>
+   <li><a id="logout">logout</a></li>
+  </ul>
+  `;
+} else {
+  footer.innerHTML = `
+  <ul>
+   <h3>Lieb Mathieson &reg;</h3>
+   <li><a class="login" href="login.html">sign in</a></li>
+   <li><a href="register.html">Sign up</a></li>
+  </ul>
+  `;
+}
+
+export async function fetchData(url = '', data = {}, methodType) {
+  const response = await fetch(`http://localhost:3000${url}`, {
+    method: methodType,
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(data)
+  });
+  if(response.ok) {
+    return await response.json();
+  } else {
+    throw await response.json();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 let form = document.getElementById("registerForm");
 //let userId = document.getElementById("questions")
@@ -135,3 +203,5 @@ class User {
 //   })
 //   .catch((err) => console.log(`Error! ${err}`));
 // }
+
+*/

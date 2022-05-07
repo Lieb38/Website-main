@@ -20,7 +20,7 @@ let question = document.getElementById("question")
 
 
 // 2
-form.addEventListener('submit', addQuestion);
+if(form) form.addEventListener('submit', addQuestion); // added if(form)
 
 
 // 3
