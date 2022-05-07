@@ -3,6 +3,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+const con = mysql.createConnection({
+  host: "localhost",
+  user: process.env.MYSQL_USERNAME,
+  password: process.env.MYSQL_PSWD
+});
+
 const userRoutes = require('./server/routes/user'); // edit to fix
 // add routes to rest of entitities
 app.use(express.json());//
