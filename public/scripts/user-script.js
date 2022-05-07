@@ -10,11 +10,11 @@ function login(e) {
 
   const name = document.getElementById("username").value;
   const pswd = document.getElementById("pswd").value;
-  fetchData('/users/login', {username: name, password: pswd}, "POST")
+  postData('http://localhost:3000/users/login', {username: name, password: pswd}, "POST")
   .then((data) => {
     if(!data.message) {
-      setCurrentUser(data);
-      window.location.href = "questions.html";
+      //setCurrentUser(data);
+      window.location.href = "home.html";
     }
   })
   .catch((error) => {
@@ -38,7 +38,7 @@ function register(e) {
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data) // new
-      window.location.href = "questions.html";
+      window.location.href = "home.html";
     }
   })
   .catch((error) => {

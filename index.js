@@ -5,7 +5,8 @@ const path = require('path');
 
 const userRoutes = require('./server/routes/user'); // edit to fix
 // add routes to rest of entitities
-app.use(express.json());
+app.use(express.json());//
+
 app.use(express.static(__dirname + "/public"));
 app.get('/', (req, res) => res.sendFile(path.join(__dirname,'/public/home.html')));
 

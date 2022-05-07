@@ -2,9 +2,9 @@ const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const users = User.getUsers();
+    const users = await User.getUsers();
     res.send(users);
   } catch(error) {
     res.status(401).send({message: error.message});
@@ -20,16 +20,16 @@ router.get('/', (req, res) => {
     }
   })
 
-  .post('/register', (req, res) => {
+  .post('/register', async (req, res) => {
     try {
-      const user = User.register(req.body);
+      const user = await User.register(req.body);
       res.send({...user, password: undefined})
     } catch(error) {
       res.status(401).send({message: error.message});
     }
   })
 
-  .delete('/delete', (req, res) => {
+  .delete('/delete', async (req, res) => {
     try {
       User.deleteUser(req.body.userId);
       res.send({success: "We'll miss you...:("});
