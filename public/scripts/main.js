@@ -1,4 +1,4 @@
-const nav = document.querySelector('nav');
+const footer = document.querySelector('footer');
 if(getCurrentUser()) {
   footer.innerHTML = `
   <ul>
@@ -37,6 +37,26 @@ export async function fetchData(url = '', data = {}, methodType) {
   }
 }
 
+
+export function setCurrentUser(user) {
+  localStorage.setItem('user', JSON.stringify(user));
+}
+
+export function removeCurrentUser() {
+  localStorage.removeItem('user')
+}
+
+export function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('user'));
+}
+
+export const logoutBtn = document.getElementById("logout");
+if(logoutBtn) logoutBtn.addEventListener('click', logout)
+
+export function logout() {
+  removeCurrentUser();
+  window.location.href = "login.html";
+}
 
 
 

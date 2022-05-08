@@ -84,12 +84,12 @@ nav {
 }
 
 
-nav ul  {
+ ul  {
   text-decoration: none;
   margin: 0px;
   padding-left: 10%;
 }
-nav ul li {
+ ul li {
   display: block;
   text-decoration: none;
   list-style: none;
@@ -233,7 +233,7 @@ footer {
   padding-left: 10%;
   margin-bottom: 15px;
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   width: 100%;
   height: 2.5rem;
 }
@@ -270,8 +270,6 @@ footer a:hover {
 
 
 /* question form */
-
-
 #questions {
   list-style: none;
   display: table;

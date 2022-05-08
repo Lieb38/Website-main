@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mysql = require('mysql2');
 
-const con = mysql.createConnection({
+const con = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USERNAME,
     password: process.env.MYSQL_PSWD,
@@ -17,17 +17,17 @@ const query = (sql, binding) => {
     });
 };
 
-const creatQuery = "CREATE DATABASE IF NOT EXISTS questions_db;";
+const createQuery = "CREATE DATABASE IF NOT EXISTS questions_db;";
 con.query(createQuery);
     
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!!");
-    con.query("CREATE DATABASE IF NOT EXISTS questions_db;", function (err, result) {
-        if (err) throw err;
-        crossOriginIsolated.log("Database created");
-    });
-});
+// con.connect(function(err) {
+//     if (err) throw err;
+//     console.log("Connected!!");
+//     con.query("CREATE DATABASE IF NOT EXISTS questions_db;", function (err, result) {
+//         if (err) throw err;
+//         crossOriginIsolated.log("Database created");
+//     });
+// });
 
 module.exports = {con, query};

@@ -16,20 +16,20 @@ let getUsers = async () => {
   return await con.query(sql);
 };
 
-con.connect( async function(err) {
-  if (err) throw err;
-  let sql = `CREATE TABLE IF NOT EXISTS users (
-    userId INT AUTO_INCREMENT PRIMARY KEY,
-    userName VARCHAR(15),
-    password VARCHAR(25),
-    CONSSTRAINT user_pk PRIMARY KEY(userId)
-    )`
+// con.connect( async function(err) {
+//   if (err) throw err;
+//   let sql = `CREATE TABLE IF NOT EXISTS users (
+//     userId INT AUTO_INCREMENT PRIMARY KEY,
+//     userName VARCHAR(15),
+//     password VARCHAR(25),
+//     CONSSTRAINT user_pk PRIMARY KEY(userId)
+//     )`
 
-  await con.query(sql, function (err, result) {
-  if (err) throw err;
-  console.log("User table created");
-  });
-});
+//   await con.query(sql, function (err, result) {
+//   if (err) throw err;
+//   console.log("User table created");
+//   });
+// });
 
 
 

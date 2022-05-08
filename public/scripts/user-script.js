@@ -10,7 +10,7 @@ function login(e) {
 
   const name = document.getElementById("username").value;
   const pswd = document.getElementById("pswd").value;
-  postData('http://localhost:3000/users/login', {username: name, password: pswd}, "POST")
+  fetchData('/users/login', {username: name, password: pswd}, "POST")
   .then((data) => {
     if(!data.message) {
       //setCurrentUser(data);
@@ -34,7 +34,7 @@ function register(e) {
   const name = document.getElementById("username").value;
   const pswd = document.getElementById("pswd").value;
   
-  postData('http://localhost:3000/users/register', {username: name, password: pswd}) // or '/users/register'
+  fetchData('http://localhost:3000/users/register', {username: name, password: pswd}) // or '/users/register'
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data) // new
@@ -63,24 +63,24 @@ function register(e) {
   });
 }
 
-function setCurrentUser(user) { /// new!!
-  localStorage.setItem('user', JSON.stringify(user));
-}
+// function setCurrentUser(user) { /// new!!
+//   localStorage.setItem('user', JSON.stringify(user));
+// }
 
-function getCurrentUser() {
-  return JSON.parse(localStorage.getItem('user'));
-}
+// function getCurrentUser() {
+//   return JSON.parse(localStorage.getItem('user'));
+// }
 
-function removeCurrentUser() {
-  localStorage.removeItem('user');
-}
+// function removeCurrentUser() {
+//   localStorage.removeItem('user');
+// }
 
-document.getElementById("logout").addEventListener('click', logout);
+// document.getElementById("logout").addEventListener('click', logout);
 
-function logout() {
-  removeCurrentUser();
-  window.location.href = "home.html"
-}
+// function logout() {
+//   removeCurrentUser();
+//   window.location.href = "home.html"
+// }
 
 //const user = getCurrentUser();
 //console.log(use.userName);
