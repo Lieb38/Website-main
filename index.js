@@ -19,6 +19,8 @@ app.use(function(req, res, next) {
 });
 
 app.use("/users", userRoutes);
+// add for each entity
+
 
 // app.get('*', function (req, res) {  /// edit w/ new code on slide 19 // rest 2
 //   res.sendFile(path.resolve(__dirname, 'public', 'bmi.html'));
