@@ -11,14 +11,14 @@ if(getCurrentUser()) {
   footer.innerHTML = `
   <ul>
    <h3>Lieb Mathieson &reg;</h3>
-   <li><a class="login" href="login.html">sign in</a></li>
+   <li><a class="login" href="login.html">Login</a></li>
    <li><a href="register.html">Sign up</a></li>
   </ul>
   `;
 }
 
-export async function fetchData(url = '', data = {}, methodType) {
-  const response = await fetch(`http://localhost:3000${url}`, {
+export async function fetchData(route = '', data = {}, methodType) {
+  const response = await fetch(`${route}`, { //http://localhost:3000
     method: methodType,
     mode: 'cors',
     cache: 'no-cache',

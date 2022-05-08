@@ -13,7 +13,7 @@ function login(e) {
   fetchData('/users/login', {username: name, password: pswd}, "POST")
   .then((data) => {
     if(!data.message) {
-      //setCurrentUser(data);
+      setCurrentUser(data);
       window.location.href = "home.html";
     }
   })
@@ -25,7 +25,7 @@ function login(e) {
   });
 }
 
-const regForm = document.getElementById("registerForm");
+const regForm = document.getElementById("reg-form");
 if(regForm) regForm.addEventListener('submit', register);
 
 function register(e) {
@@ -34,7 +34,7 @@ function register(e) {
   const name = document.getElementById("username").value;
   const pswd = document.getElementById("pswd").value;
   
-  fetchData('http://localhost:3000/users/register', {username: name, password: pswd}) // or '/users/register'
+  fetchData('/users/register', {username: name, password: pswd}, "POST") // or '/users/register'
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data) // new
@@ -43,21 +43,7 @@ function register(e) {
   })
   .catch((error) => {
     const errText = error.message
-    document.querySelector("#registerForm p.error").innerHTML = errText;
-    document.getElementById("pswd").value = "";
-    console.log(`Error! ${errText}`)
-  })
-
-  fetchData('/users/register', {username: name, password: pswd}, "POST")
-  .then((data) => {
-    if(!data.message) {
-      setCurrentUser(data);
-      window.location.href = "questions.html";
-    }
-  })
-  .catch((error) => {
-    const errText = error.message;
-    document.querySelector("#registerForm p.error").innerHTML = errText;
+    document.querySelector("#reg-form p.error").innerHTML = errText;
     document.getElementById("pswd").value = "";
     console.log(`Error! ${errText}`)
   });

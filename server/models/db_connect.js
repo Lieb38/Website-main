@@ -30,4 +30,4 @@ con.query(createQuery);
 //     });
 // });
 
-module.exports = {con, query};
+module.exports = { con, query };
