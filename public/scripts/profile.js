@@ -42,7 +42,7 @@ function editAccount(e) {
         let err = "No changes made";
         document.querySelector("#editForm p.error").innterHTML = err;
     } else {
-        fetchData('/users/edit', {userId: user.userId, userName: userName}, "PUT")
+        fetchData('/users/edit', {userId: user.user_id, userName: userName}, "PUT")
         .then((data) => {
             if(!data.message) {
                 removeCurrentUser();
@@ -60,7 +60,7 @@ function editAccount(e) {
 
 function deleteAccount() {
     if(confirm("Are you ABOSULTELY certain you want to delete your account??")) {
-        fetchData("/users/delete", {userId: user.userId}, "DELETE")
+        fetchData("/users/delete", {userId: user.user_id}, "DELETE")
         .then((data) => {
             if(!data.message) {
                 console.log(data.success);

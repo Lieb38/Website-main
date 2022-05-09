@@ -37,6 +37,7 @@ function register(e) {
   fetchData('/users/register', {username: name, password: pswd}, "POST") // or '/users/register'
   .then((data) => {
     if(!data.message) {
+      console.log(data);
       setCurrentUser(data) // new
       window.location.href = "home.html";
     }

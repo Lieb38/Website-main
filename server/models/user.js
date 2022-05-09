@@ -23,11 +23,11 @@ async function getUser(user) {
   let sql;
   if(user.userId) {
     sql = `SELECT * FROM users
-    WHERE userId = ${user.userId}
+    WHERE user_id = ${user.userId}
     `;
   } else {
     sql = `SELECT * FROM users
-    WHERE userName = "${user.username}"
+    WHERE username = "${user.username}"
     `;
   }
   return await con.query(sql)
