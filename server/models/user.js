@@ -3,10 +3,11 @@ const con = require("./db_connect");
 async function createTable() {
   let sql = `CREATE TABLE IF NOT EXISTS users (
     user_id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    user_weight NUMERIC,
-    user_height NUMERIC,
-    user_password VARCHAR(255),
+    username VARCHAR(25) NOT NULL UNIQUE,
+    user_questions NUMERIC,
+    user_answers NUMERIC,
+    user_ratings NUMERIC,
+    user_password VARCHAR(25),
     CONSTRAINT user_pk PRIMARY KEY(user_id)
   )`;
   await con.query(sql);

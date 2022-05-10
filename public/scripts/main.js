@@ -4,7 +4,7 @@ if(getCurrentUser()) {
   <ul>
    <h3>Lieb Mathieson &reg;</h3>
    <li><a href="profile.html">Profile</a></li>
-   <li><a id="logout">logout</a></li>
+   <li><a id="logout">Logout</a></li>
   </ul>
   `;
 } else {
@@ -57,7 +57,7 @@ export function logout() {
   window.location.href = "login.html";
 }
 
-// QUESTIONS JS SECTION
+// QUESTIONS JS SECTION //
 
 export function setUserQuestion(user) {
   localStorage.setItem('user', JSON.stringify(user));
