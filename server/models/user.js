@@ -1,13 +1,12 @@
-const con = require('./db_connect');
+const con = require("./db_connect");
 
 async function createTable() {
   let sql = `CREATE TABLE IF NOT EXISTS users (
     user_id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(25) NOT NULL UNIQUE,
-    user_questions NUMERIC,
-    user_answers NUMERIC,
-    user_ratings NUMERIC,
-    user_password VARCHAR(25),
+    username VARCHAR(255) NOT NULL UNIQUE,
+    user_weight NUMERIC,
+    user_height NUMERIC,
+    user_password VARCHAR(255),
     CONSTRAINT user_pk PRIMARY KEY(user_id)
   )`;
   await con.query(sql);
@@ -23,14 +22,15 @@ async function getUser(user) {
   let sql;
   if(user.userId) {
     sql = `SELECT * FROM users
-    WHERE user_id = ${user.userId}
+      WHERE user_id = ${user.userId}
     `;
   } else {
     sql = `SELECT * FROM users
-    WHERE username = "${user.username}"
+      WHERE username = "${user.username}"
     `;
   }
-  return await con.query(sql)
+
+  return await con.query(sql);
 }
 
 async function login(username, password) {
@@ -43,7 +43,7 @@ async function login(username, password) {
 
 async function register(user) {
   const u = userExists(user.username);
-  if(u.length>0) throw Error("Username already exists...");
+  if(u.length>0) throw Error("Username already exists");
 
   const sql = `INSERT INTO users (username, user_password)
     VALUES ("${user.username}", "${user.password}")
@@ -55,10 +55,11 @@ async function register(user) {
 }
 
 async function deleteUser(userId) {
-  const sql = `DELETE FROM users
+  const sql = `DELETE FROM users 
     WHERE user_id = ${userId}
   `;
   await con.query(sql);
+ 
 }
 
 async function userExists(username) {
@@ -77,83 +78,47 @@ async function editUser(user) {
   const newUser = await getUser(user);
   return newUser[0];
 }
-module.exports = { getUsers, login, register, deleteUser, editUser, getUsers, createTable };
 
-
-// con.connect( async function(err) {
-//   if (err) throw err;
-//   let sql = `CREATE TABLE IF NOT EXISTS users (
-//     userId INT AUTO_INCREMENT PRIMARY KEY,
-//     userName VARCHAR(15),
-//     password VARCHAR(25),
-//     CONSSTRAINT user_pk PRIMARY KEY(userId)
-//     )`
-
-//   await con.query(sql, function (err, result) {
-//   if (err) throw err;
-//   console.log("User table created");
-//   });
-// });
-
-
-
-
-/*
-const users = [
-    {
-      userId: 66666,
-      userName: "lieb_lieb",
-      password: "a"
-    },
-    {
-      userId: 55555,
-      userName: "tryingToBe",
-      password: "a"
-    }
-  ]
-  
-//  let getUsers = () => users;
-  
-  function login(username, password) {
-    const user = userExists(username);
-    if(!user[0]) throw Error('User not found');
-    if(user[0].password !== password) throw Error('Password is incorrect.');
-  
-    return user[0];
-  }
-  
-  function register(user) {
-    const u = userExists(user.username);
-    if(u.length>0) throw Error('Username already exists')
-  
-    const newUser = {
-      userId: users[users.length-1].userId + 1,
-      userName: user.username,
-      password: user.password
-    }
-    users.push(newUser);
-    return newUser;
-  }
-  
-  function deleteUser(userId) {
-    let i = users.map((user) => user.userId).indexOf(userId);
-    users.splice(i, 1);
-    console.log(users)
-  }
-  
-  function userExists(username) {
-    return users.filter((u) => u.userName === username);
-  }
-  
-async function editUser(user) {
-  const sql = `UPDATE users SET
-  username = "${user.userName}"
-  WHERE userId = "${user.userId}"
+// ORDER BY example
+async function order(table, column) {
+  const sql = `SELECT ${column}
+    FROM ${table}
+    ORDER BY ${column}
   `;
-  const update = await con.query(sql);
-  const newUser = await getUsers(user);
-  return newUser[0];
+  return await con.query(sql);
 }
 
-  module.exports = { getUsers, login, register, deleteUser };
-*/
+async function orderWhere(table, selection, column, condition) {
+  const sql = `SELECT ${selection}
+    FROM ${table}
+    WHERE ${column} = ${condition}
+    ORDER BY ${selection}
+  `;
+  return await con.query(sql);
+}
+
+async function orderUsernames() {
+  const sql = `SELECT * FROM users
+    ORDER BY username DESC
+  `;
+  return await con.query(sql);
+}
+
+//min and max
+async function minHeight() {
+  const sql = `SELECT MIN(user_height) 
+    FROM users
+  `;
+  return await con.query(sql);
+}
+
+async function maxHeight() {
+  const sql = `SELECT MAX(user_height) 
+    FROM users
+  `;
+  return await con.query(sql);
+}
+
+
+
+module.exports = { getUsers, login, register, deleteUser, editUser, getUser, createTable };

@@ -1,137 +1,90 @@
-/// look on bmi-app-main/ profile.js to see innerhtml injection w/ string literals
 
-let qAmount = 0;
-let aAmount = 0;
+import 
+{ fetchData, getCurrentUser, setCurrentUser, removeCurrentUser } 
+from './main.js'
 
-class Question {
-    constructor(question) {
-        this.questionId = qAmount;
-        this.questionText = question;
-        //this.questionRating = qRating;
-        qAmount++
+let user = getCurrentUser();
+
+window.onload = function setTemplate() {
+    document.getElementById('allComments').innerHTML = localStorage.getItem('template');
+};
+
+const commentContainer = document.getElementById('allComments');
+document.getElementById('addComments').addEventListener('click', function (ev) {
+   addComment(ev);
+});
+
+function addComment(ev) {
+    if(user)
+    {
+        let commentText, wrapDiv;
+        const textBox = document.createElement('div');
+        const replyButton = document.createElement('button');
+        replyButton.className = 'btn reply';
+        replyButton.innerHTML = 'Reply';
+        const likeButton = document.createElement('button');
+        likeButton.innerHTML = 'Like';
+        likeButton.className = 'btn likeComment';
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = 'Delete';
+        deleteButton.className = 'btn deleteComment';
+        if(hasClass(ev.target.parentElement, 'container')) {
+            const wrapDiv = document.createElement('div');
+            wrapDiv.className = 'question wrapper';
+            wrapDiv.style.marginLeft = 0;
+            commentText = document.getElementById('comment').value;
+            document.getElementById('comment').value = '';
+            textBox.innerHTML = commentText;
+            //textBox.style.backgroundColor = "cornflowerblue";
+            wrapDiv.append(textBox, replyButton, likeButton, deleteButton);
+            commentContainer.appendChild(wrapDiv);
+        } else {
+            wrapDiv = ev.target.parentElement;
+            commentText = ev.target.parentElement.firstElementChild.value;
+            textBox.innerHTML = commentText;
+            //textBox.style.backgroundColor = "paleturquoise";
+            wrapDiv.innerHTML = '';
+            wrapDiv.append(textBox, replyButton, likeButton, deleteButton);
+        }
+        setOnLocalStorage();
+    } else {
+        document.querySelector(".container p.error").innerHTML = "Must log in first";
     }
 }
 
-// 1
-let form = document.getElementById("questionForm");
-let question = document.getElementById("question")
-
-
-
-
-// 2
-if(form) form.addEventListener('submit', addQuestion); // added if(form)
-
-
-// 3
-function addQuestion(e) {
-    e.preventDefault();
-    // 4
-    let question = document.getElementById("question").value;
-
-    const newQuestion = new Question(question);
-    console.log(newQuestion);
-    // 5
-    let form = document.createElement('form');
-    let h3 = document.createElement('h3');
-    let label = document.createElement('label')
-    let inputText = document.createElement('input');
-    let inputSubmit = document.createElement('input');
-    let li = document.createElement('li');
-    // 6 style
-    //li.className = 'question';
-    //
-    form.className = 'question';
-    //
-    inputText.setAttribute("id","answer")
-    inputText.setAttribute("type","text")
-    label.setAttribute("for", "answer")
-   //
-    inputSubmit.setAttribute("type","submit")
-    inputSubmit.setAttribute("value","answer")
-
-    // 7 add text
-    //li.appendChild(document.createTextNode(question));
-    form.appendChild(h3)
-    h3.innerHTML = document.getElementById("question").value + "?";
-    label.innerHTML = `type answer below...`
-    form.appendChild(label)
-    form.appendChild(inputText)
-    form.appendChild(inputSubmit)
-    //input2.appendChild(document.createElement())
-    // 8 append li to questions list
-    //questions.appendChild(li);
-    questions.appendChild(form);
-    //questions.appendChild(inputText);
-    //questions.appendChild(inputSubmit);
-
-    // 9
-   // document.getElementById("question").value = "";
+function setOnLocalStorage () {
+    localStorage.setItem('template', document.getElementById('allComments').innerHTML);
 }
-// space for additional function
+function hasClass(elem, className) {
+    return elem.className.split(' ').indexOf(className) > -1;
+}
+document.getElementById('allComments').addEventListener('click', function (e) {
+    if (hasClass(e.target, 'reply')) {
+        const parentDiv = e.target.parentElement;
+        const wrapDiv = document.createElement('div');
+        wrapDiv.style.marginLeft = (Number.parseInt(parentDiv.style.marginLeft) + 15).toString() + 'px';
+        wrapDiv.className = 'answer wrapper';
+        const textArea = document.createElement('textarea');
+        textArea.style.marginRight = '20px';
+        const addButton = document.createElement('button');
+        addButton.className = 'btn addReply';
+        addButton.innerHTML = 'Add';
+        const cancelButton = document.createElement('button');
+        cancelButton.innerHTML = 'Cancel';
+        cancelButton.className='btn cancelReply';
+        wrapDiv.append(textArea, addButton, cancelButton);
+        parentDiv.appendChild(wrapDiv);
 
-class Answer {
-    constructor(answer) {
-        this.answerId = aId
-        this.answerText = answer;
-        this.answerRating = aRating;
-        qAmount++;
+    } else if(hasClass(e.target, 'addReply')) {
+        addComment(e);
+    } else if(hasClass(e.target, 'likeComment')) {
+         const likeBtnValue = e.target.innerHTML;
+         e.target.innerHTML = likeBtnValue !== 'Like' ? Number.parseInt(likeBtnValue) + 1 : 1;
+        setOnLocalStorage();
+    } else if(hasClass(e.target, 'cancelReply')) {
+        e.target.parentElement.innerHTML = '';
+        setOnLocalStorage();
+    } else if(hasClass(e.target, 'deleteComment')) {
+        e.target.parentElement.remove();
     }
-}
-// 1
-let form2 = document.getElementsByClassName("question")
-let answer = document.getElementById("answer").value;
-
-form2.addEventListener('submit', addAnswer);
- // 3
- function addAnswer(e) {
-     e.preventDefault();
-     // 4
-     const newAnswer = new Answer(answer);
-     console.log(newAnswer);
-     // 5
-     
-    form2.innerHTML = `
-    <form id="questionForm">
-        <label for="question"><b>Question</b></label>
-        <input type="text" id="question" required>
-        <input type="submit" value="Ask">
-    </form>
-    
-    `
-
-     //let Ah3 = document.createElement('h3');
-
-   //  let label2 = document.createElement('label')
-   //  let inputText2 = document.createElement('input');
-    // let inputSubmit2 = document.createElement('input');
-    // let li2 = document.createElement('li');
-     // 6 style
-     //li.className = 'question';
-     //
-    // form2.className = 'question';
-     //
-    // inputText2.setAttribute("id","answer")
-    // inputText2.setAttribute("type","text")
-     //label2.setAttribute("for", "inputText")
-    //
-     //inputSubmit2.setAttribute("type","submit")
-     //inputSubmit2.setAttribute("value","submit")
- 
-     // 7 add text
-     //li.appendChild(document.createTextNode(question));
- //    form2.appendChild(Ah3)
- //    Ah3.innerHTML = document.getElementById("answer").value;
-     //label2.innerHTML = document.createTextNode("question")
- //    form2.appendChild(label2)
-//     form2.appendChild(inputText2)
-//     form2.appendChild(inputSubmit2)
-     //input2.appendChild(document.createElement())
-     // 8 append li to questions list
-     //questions.appendChild(li);
-     answers.appendChild(form2);
-     //questions.appendChild(inputText);
-     //questions.appendChild(inputSubmit);
- 
- }
- // space for additional function
+});

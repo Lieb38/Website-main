@@ -37,7 +37,6 @@ export async function fetchData(url = '', data = {}, methodType) {
   }
 }
 
-
 export function setCurrentUser(user) {
   localStorage.setItem('user', JSON.stringify(user));
 }
@@ -58,7 +57,18 @@ export function logout() {
   window.location.href = "login.html";
 }
 
+// QUESTIONS JS SECTION
 
+export function setUserQuestion(user) {
+  localStorage.setItem('user', JSON.stringify(user));
+}
+
+export function setUserAnswer(user) {
+  localStorage.setItem('user', JSON.stringify(user));
+}
+export function setUserRating(user) {
+  localStorage.setItem('user', JSON.stringify(user));
+}
 
 
 

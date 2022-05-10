@@ -38,7 +38,7 @@ function register(e) {
   .then((data) => {
     if(!data.message) {
       setCurrentUser(data);
-      window.location.href = "profile.html";
+      window.location.href = "home.html";
     }
   })
   .catch((error) => {
@@ -48,3 +48,26 @@ function register(e) {
     console.log(`Error! ${errText}`)
   });
 }
+
+
+// function setCurrentUser(user) { /// new!!
+//   localStorage.setItem('user', JSON.stringify(user));
+// }
+
+// function getCurrentUser() {
+//   return JSON.parse(localStorage.getItem('user'));
+// }
+
+// function removeCurrentUser() {
+//   localStorage.removeItem('user');
+// }
+
+// document.getElementById("logout").addEventListener('click', logout);
+
+// function logout() {
+//   removeCurrentUser();
+//   window.location.href = "home.html"
+// }
+
+//const user = getCurrentUser();
+//console.log(use.userName);

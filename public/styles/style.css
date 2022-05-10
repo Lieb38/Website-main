@@ -215,10 +215,17 @@ input[type="submit"] {
   border: 2px solid rgb(6, 15, 10);
   padding: 10px 20px;
   border-radius: 10px;
+  transition-duration: 0.2s;
   font-size: 15px;
   text-transform: uppercase;
   margin: 30px auto 30px auto;
   box-shadow: 1px 2px 5px 0 rgb(53, 255, 50);
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(200, 255, 0);
+  box-shadow: 1px 2px 5px 0 rgb(255, 162, 0);
+  border: 2px solid rgb(153, 255, 199);
 }
 
 input[type="color"] {
@@ -276,9 +283,37 @@ footer a:hover {
 }
 
 .question {
-  width: 500px;
-  margin: 30px;
-  background-color: white;
+  text-align: center;
+  border: 2px solid rgb(6, 15, 10);
+  border-radius: 5px;
+  padding: 20px;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  width: 95%;
+  min-width: 500px;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.486);
+  background-color: rgb(220, 238, 220);
+}
+
+.answer {
+  width: 300px;
+  margin: 10px;
+  background-color: rgb(255, 0, 0);
   padding: 10px;
   border-radius: 5px;
+}
+
+.btn {
+  color: rgb(64, 94, 71);
+  background-color: rgb(209, 233, 205);
+  text-decoration: none;
+  transition-duration: 0.2s;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-color: rgb(242, 255, 0);
 }
