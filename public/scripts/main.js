@@ -59,15 +59,22 @@ export function logout() {
 
 // QUESTIONS JS SECTION //
 
-export function setUserQuestion(user) {
-  localStorage.setItem('user', JSON.stringify(user));
+export function setUserQuestion(question) {
+  localStorage.setItem('question', JSON.stringify(question));
 }
 
-export function setUserAnswer(user) {
-  localStorage.setItem('user', JSON.stringify(user));
+export function setUserAnswer(answer) {
+  localStorage.setItem('answer', JSON.stringify(answer));
 }
-export function setUserRating(user) {
-  localStorage.setItem('user', JSON.stringify(user));
+//export function setUserRating(user) {
+//  localStorage.setItem('user', JSON.stringify(user));
+//}//
+export function getCurrentQuestion() {
+  return JSON.parse(localStorage.getItem('question'));
+}
+
+export function removeQuestion() {
+  localStorage.removeItem('question')
 }
 
 

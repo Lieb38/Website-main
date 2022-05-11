@@ -24,7 +24,7 @@ function editProfile() {
     let editForm = document.getElementById("editForm"); // change this: class="basic-form"
     editForm.innerHTML = `
     <form>
-        <p class="error></p>
+        <p class="error"></p>
         <h2>Edit Profile</h2>
         <label for ="username">Change Username</label>
         <input type="text" name="username" id="username" placeholder="${user.username}">

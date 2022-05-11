@@ -1,9 +1,10 @@
 
 import 
-{ fetchData, getCurrentUser, setCurrentUser, removeCurrentUser } 
+{ fetchData, getCurrentUser, setUserQuestion, getCurrentQuestion, removeQuestion } 
 from './main.js'
 
 let user = getCurrentUser();
+let question = getCurrentQuestion();
 
 window.onload = function setTemplate() {
     document.getElementById('allComments').innerHTML = localStorage.getItem('template');
@@ -17,7 +18,7 @@ document.getElementById('addComments').addEventListener('click', function (ev) {
 function addComment(ev) {
     if(user)
     {
-        let commentText, wrapDiv;
+        let questionText, answerText, wrapDiv;
         const textBox = document.createElement('h3');
         const replyButton = document.createElement('button');
         replyButton.className = 'btn reply';
@@ -32,18 +33,29 @@ function addComment(ev) {
             const wrapDiv = document.createElement('div');
             wrapDiv.className = 'question wrapper';
             //wrapDiv.style.marginLeft = 0;
-            commentText = document.getElementById('comment').value;
+            questionText = document.getElementById('comment').value;
             //add fetch for question:
-            
+            fetchData("/question/addQuestion", {q_content: questionText, user_id: user.user_id }, "POST")
+            .then((data) => {
+                setUserQuestion(data);
+                console.log(data);
+            })
 
             document.getElementById('comment').value = '';
-            textBox.innerHTML = `${user.username} askes: "${commentText}"`;////
+            textBox.innerHTML = `${user.username} askes: "${questionText}"`;////
             wrapDiv.append(textBox, replyButton, likeButton, deleteButton);
             commentContainer.appendChild(wrapDiv);
         } else {
             wrapDiv = ev.target.parentElement;
-            commentText = ev.target.parentElement.firstElementChild.value;
-            textBox.innerHTML = `${user.username} answers: "${commentText}"`;
+            answerText = ev.target.parentElement.firstElementChild.value;
+            // fetch
+            //console.log(answerText);
+            fetchData("/answer/addAnswer", {a_content: answerText, user_id: user.user_id }, "POST")
+            .then((data) => {
+                console.log(data);
+            })
+            textBox.innerHTML = `${user.username} answers: "${answerText}"`;
+
             //textBox.style.backgroundColor = "paleturquoise";
             wrapDiv.innerHTML = '';
             wrapDiv.append(textBox, replyButton, likeButton, deleteButton);
@@ -68,6 +80,7 @@ document.getElementById('allComments').addEventListener('click', function (e) {
             const wrapDiv = document.createElement('div');
             wrapDiv.style.marginTop = (Number.parseInt(parentDiv.style.marginTop) + 5).toString() + 'px';
             wrapDiv.className = 'answer wrapper';
+            //
             const textArea = document.createElement('textarea');
             textArea.style.marginTop = '5px';
             const addButton = document.createElement('button');
@@ -94,8 +107,17 @@ document.getElementById('allComments').addEventListener('click', function (e) {
             {
 
             }
+            //answerText = e.target.parentElement.innerHTML;
+            //console.log(answerText);
+            fetchData("/question/deleteQuestion", {q_content: question.q_content}, "DELETE")
+            .then((data) => {
+                //removeQuestion();
+                console.log(data);
+            })
             e.target.parentElement.remove();
-            //
+            //question = questionText;
+            
+            //q_content: questionText, user_id: user.user_id
             //fetchData("/questions/delete", {questionId: question.question_id}, "DELETE")
             //.then((data) => {
             //    if(!data.message) {
@@ -113,24 +135,24 @@ document.getElementById('allComments').addEventListener('click', function (e) {
 //const questionBox = document.getElementsByClassName("container");
 //if(questionBox) questionBox.addEventListener('addComments', saveComment);
 
-document.getElementById('addComments').addEventListener('click', saveComment);
+//document.getElementById('addComments').addEventListener('click', saveComment);
 
-function saveComment(e) {
-  e.preventDefault();
+//function saveComment(e) {
+  //e.preventDefault();
 
-  const comment = document.getElementById("comment").value;
+  //const comment = document.getElementById("comment").value;
   //const pswd = document.getElementById("pswd").value;
 
-  fetchData('/questions/q_content', {q_content: comment}, "POST")
-  .then((data) => {
-    if(!data.message) {
-      console.log("success")
-    }
-  })
-  .catch((error) => {
-    const errText = error.message;
+//   fetchData('/questions/q_content', {q_content: comment}, "POST")
+//   .then((data) => {
+//     if(!data.message) {
+//       console.log("success")
+//     }
+//   })
+//   .catch((error) => {
+//     const errText = error.message;
     //document.querySelector(".container h1.error").innerHTML = errText;
     //document.getElementById("pswd").value = "";
     //console.log(`Error! ${errText}`)
-  });
-}
+  //});
+//}

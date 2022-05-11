@@ -15,5 +15,43 @@ async function createTable() {
 }
 createTable();
 
-let getAllQuestion = () => question.map(a => a.question);
+//let getAllQuestion = () => question.map(a => a.question);
+
+async function addQuestion(question, user_id) {
+    const sql = `INSERT INTO questions (q_content, user_id)
+        VALUES ("${question}", "${user_id}")`;
+
+    await con.query(sql);
+    const sql2 ="SELECT LAST_INSERT_ID();"
+    const id = await con.query(sql2);
+    const fullQuestion = {
+        question_id: id, 
+        q_content: question
+    };
+    return fullQuestion;
+}
+// add deleteQuestion
+// async function deleteQuestion(question, user_id) {
+//     const sql = `INSERT INTO questions (q_content, user_id)
+//         VALUES ("${question}", "${user_id}")`;
+
+//     await con.query(sql);
+//     const sql2 ="SELECT LAST_INSERT_ID();"
+//     const id = await con.query(sql2);
+//     const fullQuestion = {
+//         question_id: id, 
+//         q_content: question
+//     };
+//     return fullQuestion;
+// }
+async function deleteQuestion(id) {
+    const sql = `DELETE FROM questions 
+      WHERE question_id = ${id}
+    `;
+    await con.query(sql);
+   
+  }
+// add editQuestion
+
+module.exports = {addQuestion, deleteQuestion}
 
