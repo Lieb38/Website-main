@@ -30,6 +30,24 @@ async function addQuestion(question, user_id) {
     };
     return fullQuestion;
 }
+
+async function deleteQuestion(question_id) {
+  const sql = `DELETE FROM quesitons 
+    WHERE question_id = ${question_id}
+  `;
+  await con.query(sql);
+ 
+}
+
+async function editQuestion(quesiton) {
+  const sql = `UPDATE questions SET
+    q_content = "${question.q_content}"
+    WHERE question_id = ${question.question_id}
+  `;
+  const update = await con.query(sql);
+  const newQuestion = await getQuestion(question);
+  return newQuestion[0];
+}
 // add deleteQuestion
 // async function deleteQuestion(question, user_id) {
 //     const sql = `INSERT INTO questions (q_content, user_id)
@@ -53,5 +71,5 @@ async function deleteQuestion(id) {
   }
 // add editQuestion
 
-module.exports = {addQuestion, deleteQuestion}
+module.exports = {addQuestion, deleteQuestion, editQuestion}
 

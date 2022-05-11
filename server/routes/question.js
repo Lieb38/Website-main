@@ -21,4 +21,16 @@ router
     }
   })
 
+  .put('/editQuestion', async (req, res) => {
+    try {
+      const editQuestion = await Question.editUser(req.body);
+      console.log(editQuestion)
+      res.send({...question, q_content: undefined});
+    } catch(error) {
+      res.status(401).send({message: error.message})
+    }
+  })
+
+
+
   module.exports = router;

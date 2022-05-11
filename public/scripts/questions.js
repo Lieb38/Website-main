@@ -109,7 +109,7 @@ document.getElementById('allComments').addEventListener('click', function (e) {
             }
             //answerText = e.target.parentElement.innerHTML;
             //console.log(answerText);
-            fetchData("/question/deleteQuestion", {q_content: question.q_content}, "DELETE")
+            fetchData("/question/deleteQuestion", {question: question.question_id}, "DELETE")
             .then((data) => {
                 //removeQuestion();
                 console.log(data);
