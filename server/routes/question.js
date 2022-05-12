@@ -14,7 +14,7 @@ router
 
   .delete('/deleteQuestion', async (req, res) => {
     try {
-      await Question.deleteQuestion(req.body.question_id);
+      await Question.deleteQuestion(req.body.q_content);
       res.send({success: "We'll miss you...:("});
     } catch(error) {
       res.status(401).send({message: error.message});
@@ -23,7 +23,7 @@ router
 
   .put('/editQuestion', async (req, res) => {
     try {
-      const editQuestion = await Question.editUser(req.body);
+      const editQuestion = await Question.editQuestion(req.body);
       console.log(editQuestion)
       res.send({...question, q_content: undefined});
     } catch(error) {

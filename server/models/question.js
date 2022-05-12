@@ -31,15 +31,15 @@ async function addQuestion(question, user_id) {
     return fullQuestion;
 }
 
-async function deleteQuestion(question_id) {
-  const sql = `DELETE FROM quesitons 
-    WHERE question_id = ${question_id}
+async function deleteQuestion(q_content) {
+  const sql = `DELETE FROM questions 
+    WHERE q_content = ${q_content}
   `;
   await con.query(sql);
  
 }
 
-async function editQuestion(quesiton) {
+async function editQuestion(question) {
   const sql = `UPDATE questions SET
     q_content = "${question.q_content}"
     WHERE question_id = ${question.question_id}
@@ -49,26 +49,13 @@ async function editQuestion(quesiton) {
   return newQuestion[0];
 }
 // add deleteQuestion
-// async function deleteQuestion(question, user_id) {
-//     const sql = `INSERT INTO questions (q_content, user_id)
-//         VALUES ("${question}", "${user_id}")`;
-
+// async function deleteQuestion(id) {
+//     const sql = `DELETE FROM questions 
+//       WHERE question_id = ${id}
+//     `;
 //     await con.query(sql);
-//     const sql2 ="SELECT LAST_INSERT_ID();"
-//     const id = await con.query(sql2);
-//     const fullQuestion = {
-//         question_id: id, 
-//         q_content: question
-//     };
-//     return fullQuestion;
-// }
-async function deleteQuestion(id) {
-    const sql = `DELETE FROM questions 
-      WHERE question_id = ${id}
-    `;
-    await con.query(sql);
    
-  }
+//   }
 // add editQuestion
 
 module.exports = {addQuestion, deleteQuestion, editQuestion}

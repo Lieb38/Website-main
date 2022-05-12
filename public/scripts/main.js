@@ -74,7 +74,7 @@ export function getCurrentQuestion() {
 }
 
 export function removeQuestion() {
-  localStorage.removeItem('question')
+  localStorage.removeItem('question');
 }
 
 
