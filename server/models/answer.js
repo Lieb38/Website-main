@@ -33,7 +33,25 @@ async function addAnswer(answer, user_id) {
 // add deleteQuestion
 // add editQuestion
 
-module.exports = {addAnswer}
+async function deleteAnswer(answer_id) {
+  const sql = `DELETE FROM answers 
+    WHERE answer_id = ${answer_id}
+  `;
+  await con.query(sql);
+ 
+}
+
+async function editAnswer(answer) {
+  const sql = `UPDATE answers SET
+    a_content = "${answer.a_content}"
+    WHERE answer_id = ${answer.answer_id}
+  `;
+  const update = await con.query(sql);
+  const newAnswer = await getAnswer(answer);
+  return await newAnswer[0];
+}
+
+module.exports = {addAnswer, deleteAnswer, editAnswer}
 
 
 // how do i make it so everytime a question or answwer is submitted, it updates the database

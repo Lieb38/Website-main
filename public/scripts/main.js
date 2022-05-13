@@ -73,8 +73,16 @@ export function getCurrentQuestion() {
   return JSON.parse(localStorage.getItem('question'));
 }
 
+export function getCurrentAnswer() {
+  return JSON.parse(localStorage.getItem('answer'));
+}
+
 export function removeQuestion() {
   localStorage.removeItem('question');
+}
+
+export function removeAnswer() {
+  localStorage.removeItem('answer');
 }
 
 

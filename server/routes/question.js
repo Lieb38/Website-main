@@ -3,6 +3,16 @@ const Question = require('../models/question');
 const router = express.Router();
 
 router
+.get('/', async (req, res) => {
+  try {
+    const questions = await Question.getQuestion();
+    res.send(questions);
+  } catch(err) {
+    res.status(401).send({message: err.message});
+  }
+})
+
+
   .post('/addQuestion', async (req, res) => {
     try {
       const addQuestion = await Question.addQuestion(req.body.q_content, req.body.user_id);

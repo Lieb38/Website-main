@@ -31,9 +31,9 @@ async function addQuestion(question, user_id) {
     return fullQuestion;
 }
 
-async function deleteQuestion(q_content) {
+async function deleteQuestion(question_id) {
   const sql = `DELETE FROM questions 
-    WHERE q_content = ${q_content}
+    WHERE question_id = ${question_id}
   `;
   await con.query(sql);
  
@@ -46,7 +46,7 @@ async function editQuestion(question) {
   `;
   const update = await con.query(sql);
   const newQuestion = await getQuestion(question);
-  return newQuestion[0];
+  return await newQuestion[0];
 }
 // add deleteQuestion
 // async function deleteQuestion(id) {

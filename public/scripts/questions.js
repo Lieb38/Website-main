@@ -10,11 +10,12 @@
 // get front end to work then ask kaitlin for help on backend=
 
 import 
-{ fetchData, getCurrentUser, setUserQuestion, getCurrentQuestion, removeQuestion, setUserAnswer } 
+{ fetchData, getCurrentUser, setUserQuestion, getCurrentQuestion, getCurrentAnswer, removeQuestion, removeAnswer, setUserAnswer } 
 from './main.js'
 
 let user = getCurrentUser();
 let question = getCurrentQuestion();
+let answer = getCurrentAnswer()
 
 
 window.onload = function setTemplate() {
@@ -36,7 +37,7 @@ function addQuestion(ev) {
 
         // quesiton " text"
         let textBox = document.createElement('h3');
-        textBox.className = "Q";
+        //textBox.className = "Q";
 
         //submit reply button
         const replyButton = document.createElement('button');
@@ -48,6 +49,11 @@ function addQuestion(ev) {
         deleteButton.innerHTML = 'Delete';
         deleteButton.className = 'btn deleteQuestion';
 
+        // delete answer buttion
+        const deleteButton2 = document.createElement('button');
+        deleteButton2.innerHTML = 'Delete';
+        deleteButton2.className = 'btn deleteAnswer';
+
         // edit question button
         const editButton = document.createElement('button');
         editButton.innerHTML = 'Edit';
@@ -58,6 +64,7 @@ function addQuestion(ev) {
             // wrapper for Quesitons
             const wrapDiv = document.createElement('div');
             wrapDiv.className = 'question wrapper';
+            textBox.className = "q";
 
             // grab text for question
             questionText = document.getElementById('comment').value;
@@ -72,9 +79,8 @@ function addQuestion(ev) {
             questionContainer.appendChild(wrapDiv);
 
             //add fetch for question:
-            fetchData("/question/addQuestion", {q_content: textBox, user_id: user.user_id }, "POST")
+            fetchData("/question/addQuestion", {q_content: questionText, user_id: user.user_id }, "POST")
             .then((data) => {
-                data = { }
                 setUserQuestion(data);
                 console.log(data);
             })
@@ -86,12 +92,13 @@ function addQuestion(ev) {
             
             // label on answer:
             textBox.innerHTML = `${user.username} answers: "${answerText}"`;
-
+            textBox.className = "A";
             wrapDiv.innerHTML = '';
-            wrapDiv.append(textBox, replyButton, deleteButton, editButton);
+            let a = document.getElementsByClassName('A').innerHTML;
+            wrapDiv.append(textBox, replyButton, deleteButton2, editButton);
 
             //
-            fetchData("/answer/addAnswer", {a_content: textBox, user_id: user.user_id }, "POST")
+            fetchData("/answer/addAnswer", {a_content: answerText, user_id: user.user_id }, "POST")
             .then((data) => {
                 setUserAnswer(data);
                 console.log(data);
@@ -107,11 +114,6 @@ function addQuestion(ev) {
 function hasClass(elem, className) {
     return elem.className.split(' ').indexOf(className) > -1;
 }
-
-//function setOnLocalStorage () {
-//    localStorage.setItem('template', document.getElementById('allComments').innerHTML);
-
-
 
 
 document.getElementById('allQuestions').addEventListener('click', function (e) {
@@ -175,9 +177,9 @@ document.getElementById('allQuestions').addEventListener('click', function (e) {
 
             let questionText = e.target.parentElement.firstElementChild.innerHTML.value;
             console.log(questionText);
-            fetchData("/question/deleteQuestion", {q_content: questionText}, "DELETE")
+            fetchData("/question/deleteQuestion", {question_id: question.question_id}, "DELETE")
             .then((data) => {
-                //removeQuestion();
+                removeQuestion();
                 console.log(data);
             })
             e.target.parentElement.remove();
@@ -185,8 +187,16 @@ document.getElementById('allQuestions').addEventListener('click', function (e) {
         } else if(hasClass(e.target, 'addEdit')) {
             editQuestion(e);
             setOnLocalStorage();
-        } else {
-            console.log('nothing');
+
+        } else if(hasClass(e.target, 'deleteAnswer')) {
+            let answerText = e.target.parentElement.firstElementChild.innerHTML.value;
+            console.log(answerText);
+            fetchData("/answer/deleteAnswer", {answer_id: answer.answer_id}, "DELETE")
+            .then((data) => {
+                removeAnswer();
+                console.log(data);
+            })
+            e.target.parentElement.remove();
         }
     } else {
         document.querySelector(".container h1.error").innerHTML = "Must log in first";
@@ -208,16 +218,16 @@ function editQuestion(ev) {
 
         if(hasClass(parentDiv, 'question')) {
         
-            fetchData("/question/editQuestion", {q_content: questionText, user_id: user.user_id }, "PUT")
+            fetchData("/question/editQuestion", {q_content: questionText, question_id: question.question_id }, "PUT")
             .then((data) => {
             setUserQuestion(data);
             
             console.log(data);
             }) 
         } else {
-            fetchData("/question/editAnswer", {a_content: questionText, user_id: user.user_id }, "PUT")
+            fetchData("/answer/editAnswer", {a_content: questionText, answer_id: answer.answer_id }, "PUT")
             .then((data) => {
-            setUserQuestion(data);
+            setUserAnswer(data);
             
             console.log(data);
             }) 
@@ -227,12 +237,6 @@ function editQuestion(ev) {
          
 
     }
-}
-
-
-
-function editAnswer(e) {
-
 }
 
 
