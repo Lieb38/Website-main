@@ -24,7 +24,7 @@ router
 
   .delete('/deleteQuestion', async (req, res) => {
     try {
-      await Question.deleteQuestion(req.body.q_content);
+      await Question.deleteQuestion(req.body.question_id);
       res.send({success: "We'll miss you...:("});
     } catch(error) {
       res.status(401).send({message: error.message});

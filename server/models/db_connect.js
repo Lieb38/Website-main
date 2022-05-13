@@ -17,10 +17,10 @@ const query = (sql, binding) => {
   });
 };
 
-const createQuery = "CREATE DATABASE IF NOT EXISTS bmi_db;";
+const createQuery = "CREATE DATABASE IF NOT EXISTS questions_db;";
 con.query(createQuery);
 
-module.exports = { con, query };
+//module.exports = { con, query };
 
 // con.connect(function(err) {
 //     if (err) throw err;

@@ -17,6 +17,28 @@ async function createTable() {
 }
 createTable();
 
+let getAnswers = async () => {
+  const sql = `SELECT * FROM answers`;
+  return await con.query(sql);
+};
+
+async function getAnswer(answer) {
+  let sql;
+  if(answer.answer_id) {
+    sql = `SELECT * FROM answers
+      WHERE answer_id = ${answer.answer_id}
+    `;
+  } else {
+    sql = `SELECT * FROM answers
+      WHERE a_content = "${answer.a_content}"
+    `;
+  }
+
+  return await con.query(sql);
+}
+
+
+
 async function addAnswer(answer, user_id) {
     const sql = `INSERT INTO answers (a_content, user_id)
         VALUES ("${answer}", "${user_id}")`;
@@ -51,7 +73,7 @@ async function editAnswer(answer) {
   return await newAnswer[0];
 }
 
-module.exports = {addAnswer, deleteAnswer, editAnswer}
+module.exports = {addAnswer, deleteAnswer, editAnswer, getAnswer, getAnswers}
 
 
 // how do i make it so everytime a question or answwer is submitted, it updates the database
