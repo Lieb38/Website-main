@@ -17,6 +17,27 @@ createTable();
 
 //let getAllQuestion = () => question.map(a => a.question);
 
+let getQuestions = async () => {
+  const sql = `SELECT * FROM questions`;
+  return await con.query(sql);
+};
+
+async function getQuestion(question) {
+  let sql;
+  if(question.question_id) {
+    sql = `SELECT * FROM questions
+      WHERE question_id = ${question.question_id}
+    `;
+  } else {
+    sql = `SELECT * FROM questions
+      WHERE q_content = "${question.q_content}"
+    `;
+  }
+
+  return await con.query(sql);
+}
+
+
 async function addQuestion(question, user_id) {
     const sql = `INSERT INTO questions (q_content, user_id)
         VALUES ("${question}", "${user_id}")`;
@@ -58,5 +79,5 @@ async function editQuestion(question) {
 //   }
 // add editQuestion
 
-module.exports = {addQuestion, deleteQuestion, editQuestion}
+module.exports = {addQuestion, deleteQuestion, editQuestion, getQuestion, getQuestions}
 
