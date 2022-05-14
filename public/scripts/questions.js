@@ -2,9 +2,10 @@ import
 { fetchData, getCurrentUser, setUserQuestion, getCurrentQuestion, getCurrentAnswer, removeQuestion, removeAnswer, setUserAnswer } 
 from './main.js'
 
-let user = getCurrentUser();
-let question = getCurrentQuestion();
-let answer = getCurrentAnswer()
+
+var user = getCurrentUser();
+var question = getCurrentQuestion();
+var answer = getCurrentAnswer()
 
 
 window.onload = function setTemplate() {
@@ -178,8 +179,8 @@ document.getElementById('allQuestions').addEventListener('click', function (e) {
             setOnLocalStorage();
 
         } else if(hasClass(e.target, 'deleteAnswer')) {
-            let answerText = e.target.parentElement.firstElementChild.innerHTML.value;
-            console.log(answerText);
+            //let answerText = e.target.parentElement.firstElementChild.innerHTML.value;
+            //console.log(answerText);
             fetchData("/answer/deleteAnswer", {answer_id: answer.answer_id}, "DELETE")
             .then((data) => {
                 removeAnswer();

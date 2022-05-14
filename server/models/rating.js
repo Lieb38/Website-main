@@ -8,9 +8,9 @@ async function createTable() {
     answer_id INT,
     user_id INT,
     CONSTRAINT rating_pk PRIMARY KEY(rating_id),
-    CONSTRAINT usera_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
-    CONSTRAINT question_fk FOREIGN KEY(question_id) REFERENCES questions(question_id),
-    CONSTRAINT answer_fk FOREIGN KEY(answer_id) REFERENCES answers(answer_id)
+    CONSTRAINT userr_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
+    CONSTRAINT questionr_fk FOREIGN KEY(question_id) REFERENCES questions(question_id),
+    CONSTRAINT answerr_fk FOREIGN KEY(answer_id) REFERENCES answers(answer_id)
   )`;
   await con.query(sql);
 }
