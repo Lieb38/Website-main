@@ -1,14 +1,3 @@
-//import { addQuestion } from '../../server/models/question.js';
-
-// look for edits
-
-// editQuesiton: add aditional if statement for if parent class is container for question, 
-// else for answer // 
-
-// create edit paths for answers/ questions/. 
-
-// get front end to work then ask kaitlin for help on backend=
-
 import 
 { fetchData, getCurrentUser, setUserQuestion, getCurrentQuestion, getCurrentAnswer, removeQuestion, removeAnswer, setUserAnswer } 
 from './main.js'
@@ -214,7 +203,7 @@ function editQuestion(ev) {
         // label on answer:
         parentDiv.firstElementChild.innerHTML = `${user.username} edited to: "${questionText}"`;
 
-        wrapDiv.remove()// = '';
+        wrapDiv.remove();
 
         if(hasClass(parentDiv, 'question')) {
         
@@ -233,9 +222,6 @@ function editQuestion(ev) {
             }) 
 
         }
-        //
-         
-
     }
 }
 
