@@ -33,7 +33,7 @@ router
 
   .delete('/deleteAnswer', async (req, res) => {
     try {
-      await Answer.deleteAnswer(req.body.answer_id);
+      await Answer.deleteAnswer(req.body.a_content);
       res.send({success: "We'll miss you...:("});
     } catch(error) {
       res.status(401).send({message: error.message});

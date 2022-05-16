@@ -92,7 +92,7 @@ function addQuestion(ev) {
             textBox.className = "A";
             wrapDiv.innerHTML = '';
             let a = document.getElementsByClassName('A').innerHTML;
-            wrapDiv.append(textBox, replyButton, deleteButton2, editButton);
+            wrapDiv.append(textBox, replyButton, editButton, deleteButton2);
 
             //
             fetchData("/answer/addAnswer", {a_content: answerText, user_id: user.user_id }, "POST")
