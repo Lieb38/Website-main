@@ -75,6 +75,8 @@ To run the project, initialize the server with node by entering npm run dev.
 
 # images:
 
+<img width="1240" alt="Screen Shot 2022-05-16 at 5 42 00 PM" src="https://user-images.githubusercontent.com/57721845/168687292-5bc4b1a0-e560-4cbf-9763-64331ab9e57a.png">
+
 
 
 
