@@ -3,6 +3,14 @@ const Answer = require('../models/answer');
 const router = express.Router();
 
 router
+  .get ('/getAllanswers', async (req, res) => {
+    try {
+      const answers = await Answer.getAllAnswers();
+      res.send(answers);
+    } catch(err) {
+      res.status(401).send({message: err.message});
+    }
+})
 
   .get('/', async (req, res) => {
     try {

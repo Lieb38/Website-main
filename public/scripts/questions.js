@@ -59,19 +59,26 @@ function addQuestion(ev) {
             // grab text for question
             questionText = document.getElementById('comment').value;
             document.getElementById('comment').value = '';
-
+            
 
             //label on question
-            textBox.innerHTML = `${user.username} askes: "${questionText}"`;////
+            textBox.innerHTML = `${user.username} askes... ${questionText}`;////
+            //console.log(textBox.innerHTML);
 
+            let sendQ = textBox.innerHTML;
+            console.log(sendQ)
             wrapDiv.append(textBox, replyButton, editButton, deleteButton);
 
             questionContainer.appendChild(wrapDiv);
 
             //add fetch for question:
-            fetchData("/question/addQuestion", {q_content: questionText, user_id: user.user_id }, "POST")
+            fetchData("/question/addQuestion", {q_content: sendQ, user_id: user.user_id }, "POST")
             .then((data) => {
                 setUserQuestion(data);
+                //ev.target.deleteButton.id = data.question_id;
+                deleteButton.id = JSON.stringify(data.q_content);
+
+                //ev.target.deleteButton.id = "erase" + element.question_id;
                 console.log(data);
             })
         } 
@@ -91,6 +98,7 @@ function addQuestion(ev) {
             fetchData("/answer/addAnswer", {a_content: answerText, user_id: user.user_id }, "POST")
             .then((data) => {
                 setUserAnswer(data);
+
                 console.log(data);
             })
         }
@@ -165,11 +173,11 @@ document.getElementById('allQuestions').addEventListener('click', function (e) {
 
         } else if(hasClass(e.target, 'deleteQuestion')) {
 
-            let questionText = e.target.parentElement.firstElementChild.innerHTML.value;
+            let questionText = e.target.parentElement.firstElementChild.innerHTML;
             console.log(questionText);
-            fetchData("/question/deleteQuestion", {question_id: question.question_id}, "DELETE")
+            fetchData("/question/deleteQuestion", {q_content: questionText}, "DELETE") //user_id
             .then((data) => {
-                removeQuestion();
+                //removeQuestion();
                 console.log(data);
             })
             e.target.parentElement.remove();
@@ -179,9 +187,9 @@ document.getElementById('allQuestions').addEventListener('click', function (e) {
             setOnLocalStorage();
 
         } else if(hasClass(e.target, 'deleteAnswer')) {
-            //let answerText = e.target.parentElement.firstElementChild.innerHTML.value;
-            //console.log(answerText);
-            fetchData("/answer/deleteAnswer", {answer_id: answer.answer_id}, "DELETE")
+            let answerText = e.target.parentElement.firstElementChild.innerHTML;
+            console.log(answerText);
+            fetchData("/answer/deleteAnswer", {a_content: answerText}, "DELETE")
             .then((data) => {
                 removeAnswer();
                 console.log(data);
@@ -199,11 +207,11 @@ function editQuestion(ev) {
     {
         var wrapDiv = ev.target.parentElement;
         var parentDiv = wrapDiv.parentElement;
-        var questionText = ev.target.parentElement.firstElementChild.value; // from new textarea
+        //var questionText = ev.target.parentElement.firstElementChild.value; // from new textarea
             
         // label on answer:
         parentDiv.firstElementChild.innerHTML = `${user.username} edited to: "${questionText}"`;
-
+        let questionText = parentDiv.firstElementChild.innerHTML;
         wrapDiv.remove();
 
         if(hasClass(parentDiv, 'question')) {

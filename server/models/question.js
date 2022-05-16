@@ -6,11 +6,11 @@ async function createTable() {
     date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     q_content  VARCHAR(255),
     rating INT,
-    user_id INT,
-    CONSTRAINT question_pk PRIMARY KEY(question_id),
-    CONSTRAINT user_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
-    CONSTRAINT rating_fk FOREIGN KEY(rating) REFERENCES ratings(rating_score)
+    user_id INT
   )`;
+  // CONSTRAINT question_pk PRIMARY KEY(question_id),
+  // CONSTRAINT user_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
+  // CONSTRAINT rating_fk FOREIGN KEY(rating) REFERENCES ratings(rating_score)
   await con.query(sql);
 }
 createTable();
@@ -21,6 +21,13 @@ let getQuestions = async () => {
   const sql = `SELECT * FROM questions`;
   return await con.query(sql);
 };
+
+async function getAllQuestions() {
+  let sql;
+  sql = `SELECT q_content, question_id, user_id FROM questions`;
+  return await con.query(sql);
+};
+
 
 async function getQuestion(question) {
   let sql;
@@ -40,7 +47,7 @@ async function getQuestion(question) {
 
 async function addQuestion(question, user_id) {
     const sql = `INSERT INTO questions (q_content, user_id)
-        VALUES ("${question}", "${user_id}")`;
+        VALUES ("${question}", ${user_id})`;
 
     await con.query(sql);
     const sql2 ="SELECT LAST_INSERT_ID();"
@@ -52,9 +59,9 @@ async function addQuestion(question, user_id) {
     return fullQuestion;
 }
 
-async function deleteQuestion(question_id) {
+async function deleteQuestion(q_content) {
   const sql = `DELETE FROM questions 
-    WHERE question_id = ${question_id}
+    WHERE q_content = ${q_content}
   `;
   await con.query(sql);
  
@@ -79,5 +86,5 @@ async function editQuestion(question) {
 //   }
 // add editQuestion
 
-module.exports = {addQuestion, deleteQuestion, editQuestion, getQuestion, getQuestions}
+module.exports = {getAllQuestions, addQuestion, deleteQuestion, editQuestion, getQuestion, getQuestions}
 
