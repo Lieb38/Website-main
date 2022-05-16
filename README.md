@@ -73,6 +73,7 @@ open mysql and make sure to copy the databases in the server/models to the new, 
 
 To run the project, initialize the server with node by entering npm run dev.
 
+# images:
 
 
 
