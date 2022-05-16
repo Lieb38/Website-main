@@ -64,6 +64,8 @@ Mysql2, node.js, nodemon, express.js, and JavaScript were used on the backend, w
 
 # ERD
 
+<img width="564" alt="Screen Shot 2022-05-16 at 6 23 25 PM" src="https://user-images.githubusercontent.com/57721845/168692165-8264a1ab-f6c1-46a6-8ad5-3358ed10ec21.png">
+
 # How to download & use:
 
 To use the site you will need to have javascript, node.js, mysql & mysql2, and nodemon installed on your device.
@@ -73,6 +75,9 @@ open mysql and make sure to copy the databases in the server/models to the new, 
 
 To run the project, initialize the server with node by entering npm run dev.
 
+# images:
+
+<img width="1240" alt="Screen Shot 2022-05-16 at 5 42 00 PM" src="https://user-images.githubusercontent.com/57721845/168687292-5bc4b1a0-e560-4cbf-9763-64331ab9e57a.png">
 
 
 
