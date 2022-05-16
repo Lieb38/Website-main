@@ -7,12 +7,13 @@ async function createTable() {
     a_content VARCHAR(255),
     rating INT,
     question_id INT,
-    user_id INT
+    user_id INT,
+    CONSTRAINT answer_pk PRIMARY KEY(answer_id),
+    CONSTRAINT usera_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
+    CONSTRAINT question_fk FOREIGN KEY(question_id) REFERENCES questions(question_id),
+    CONSTRAINT rating_fk FOREIGN KEY(rating) REFERENCES ratings(rating_score)
   )`;
-  // CONSTRAINT answer_pk PRIMARY KEY(answer_id),
-  // CONSTRAINT usera_fk FOREIGN KEY(user_id) REFERENCES users(user_id),
-  // CONSTRAINT question_fk FOREIGN KEY(question_id) REFERENCES questions(question_id),
-  // CONSTRAINT rating_fk FOREIGN KEY(rating) REFERENCES ratings(rating_score)
+  
   await con.query(sql);
 }
 createTable();
@@ -73,7 +74,7 @@ async function deleteAnswer(a_content) {
 async function editAnswer(answer) {
   const sql = `UPDATE answers SET
     a_content = "${answer.a_content}"
-    WHERE answer_id = ${answer.answer_id}
+    WHERE user_id = ${answer.user_id}
   `;
   const update = await con.query(sql);
   const newAnswer = await getAnswer(answer);

@@ -175,7 +175,8 @@ document.getElementById('allQuestions').addEventListener('click', function (e) {
 
             let questionText = e.target.parentElement.firstElementChild.innerHTML;
             console.log(questionText);
-            fetchData("/question/deleteQuestion", {q_content: questionText}, "DELETE") //user_id
+            let qqq = JSON.stringify(questionText)
+            fetchData("/question/deleteQuestion", {q_content: qqq}, "DELETE") //user_id
             .then((data) => {
                 //removeQuestion();
                 console.log(data);
@@ -188,8 +189,9 @@ document.getElementById('allQuestions').addEventListener('click', function (e) {
 
         } else if(hasClass(e.target, 'deleteAnswer')) {
             let answerText = e.target.parentElement.firstElementChild.innerHTML;
+            let aaa = JSON.stringify(answerText)
             console.log(answerText);
-            fetchData("/answer/deleteAnswer", {a_content: answerText}, "DELETE")
+            fetchData("/answer/deleteAnswer", {a_content: aaa}, "DELETE")
             .then((data) => {
                 removeAnswer();
                 console.log(data);
@@ -207,23 +209,30 @@ function editQuestion(ev) {
     {
         var wrapDiv = ev.target.parentElement;
         var parentDiv = wrapDiv.parentElement;
-        //var questionText = ev.target.parentElement.firstElementChild.value; // from new textarea
+        var questionText = ev.target.parentElement.firstElementChild.value; // from new textarea
             
         // label on answer:
-        parentDiv.firstElementChild.innerHTML = `${user.username} edited to: "${questionText}"`;
-        let questionText = parentDiv.firstElementChild.innerHTML;
+        
+        //let questionText = parentDiv.firstElementChild.innerHTML;
+        //console.log(questionText);
+        //let qt = JSON.stringify(questionText);
+
+        parentDiv.firstElementChild.innerHTML = `${user.username} edited to.... ${questionText}`;
+        let qtt = parentDiv.firstElementChild.innerHTML;
+        let qt = JSON.stringify(qtt);
+        console.log(qtt);
         wrapDiv.remove();
 
         if(hasClass(parentDiv, 'question')) {
         
-            fetchData("/question/editQuestion", {q_content: questionText, question_id: question.question_id }, "PUT")
+            fetchData("/question/editQuestion", {q_content: qtt, user_id: user.user_id}, "PUT")
             .then((data) => {
             setUserQuestion(data);
             
             console.log(data);
             }) 
         } else {
-            fetchData("/answer/editAnswer", {a_content: questionText, answer_id: answer.answer_id }, "PUT")
+            fetchData("/answer/editAnswer", {a_content: qtt, user_id: user.user_id }, "PUT")
             .then((data) => {
             setUserAnswer(data);
             

@@ -44,7 +44,7 @@ router
     try {
       const editAnswer = await Answer.editAnswer(req.body);
       console.log(editAnswer)
-      res.send({...answer, a_content: undefined});
+      res.send({a_content: undefined});
     } catch(error) {
       res.status(401).send({message: error.message})
     }

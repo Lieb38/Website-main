@@ -54,7 +54,7 @@ router
     try {
       const editQuestion = await Question.editQuestion(req.body);
       console.log(editQuestion)
-      res.send({...question, q_content: undefined});
+      res.send({q_content: undefined});
     } catch(error) {
       res.status(401).send({message: error.message})
     }
