@@ -78,7 +78,7 @@ then install mysql, then install nodemon, then install mysql2, then install java
 
 download dependancies using the command: node index.js
 Then you want to run it: npm run dev.\
-Open it in your local host.\
+Open it in your local host.
 
 set up your mysql. Create a database to hold the backend files. I called mine questions_db. 
 With the same tables located at the top of my server/models section: create a new table in mysql for each. Just copy and paste between the backticks.
