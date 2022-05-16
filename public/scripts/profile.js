@@ -8,7 +8,7 @@ if(!user) window.location.href = "login.html";
 
 let profile = document.getElementById("profile"); // add styles for error class, btn class, edit id, delete id
 profile.innerHTML = `
-    <h1>You again? Hi ${user.username}!</h1>
+    <h1 class="qH1">You again? Hi ${user.username}!</h1>
     <div>
         <p class="error"></p>
         <button class="btn" id="edit">Edit Info</button>
