@@ -73,7 +73,8 @@ Mysql2, node.js, nodemon, express.js, json, and JavaScript were used on the back
 To use the site you will need to have javascript, node.js, mysql & mysql2, and nodemon installed on your device.
 If you are using a mac, you will need to set the file path in your terminal to this file.
 
-In terminal, type: npm install, then install mysql, then install nodemon, then install mysql2, then install javascript if you haven't already.
+In terminal, type: npm install node.js\
+then install mysql, then install nodemon, then install mysql2, then install javascript if you haven't already.
 
 download dependancies using the command: node index.js
 Then you want to run it: npm run dev.\
