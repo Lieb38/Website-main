@@ -81,7 +81,7 @@ Then you want to run it: npm run dev.\
 Open it in your local host.
 
 set up your mysql. Create a database to hold the backend files. I called mine questions_db. 
-With the same tables located at the top of my server/models section: create a new table in mysql for each. Just copy and paste between the backticks.
+With the same tables located at the top of my server/models section: create a new table in mysql for each. Just copy and paste between the backticks in the 'createTable()' function.
 
 That should do it. Oh yeah, set up your file path for mysql, if it's giving you trouble. There are a number of ways to do it, I made it work after spending a few hours on stack exchange: just look up setting up your bash_profile, it will depend on your terminal configuration. Good Luck!
 
