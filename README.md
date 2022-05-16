@@ -64,6 +64,8 @@ Mysql2, node.js, nodemon, express.js, and JavaScript were used on the backend, w
 
 # ERD
 
+<img width="582" alt="Screen Shot 2022-05-16 at 6 20 45 PM" src="https://user-images.githubusercontent.com/57721845/168691856-ea424710-c329-4cd4-8a5f-175bc4d79f05.png">
+
 # How to download & use:
 
 To use the site you will need to have javascript, node.js, mysql & mysql2, and nodemon installed on your device.
