@@ -78,20 +78,27 @@ To run the project, initialize the server with node by entering npm run dev.
 
 # images:
 
+Landign Page!
 <img width="857" alt="Screen Shot 2022-05-16 at 6 34 16 PM" src="https://user-images.githubusercontent.com/57721845/168693825-5e254d18-13aa-4fea-a22e-f8f44bda948e.png">
 
+Log in!.. dont already have an account?
 <img width="1203" alt="Screen Shot 2022-05-16 at 6 30 16 PM" src="https://user-images.githubusercontent.com/57721845/168693540-66e4e3dc-fddd-4cc5-b393-682d6acca777.png">
 
+Register! make sure your password is correct... I do NOT know how to change it ;)
 <img width="1186" alt="Screen Shot 2022-05-16 at 6 44 37 PM" src="https://user-images.githubusercontent.com/57721845/168694523-0da61cd7-90b5-40b2-b3ce-8b275912e414.png">
-
+Ask me Anything! ... But DO NOT BE A STRANGER
 <img width="1165" alt="Screen Shot 2022-05-16 at 6 44 51 PM" src="https://user-images.githubusercontent.com/57721845/168694517-711ee5ed-fa50-4e39-98d2-c19f831b3c81.png">
 
+Am I me or am I someone else... Be sure to ask yourself this question before changing your username.
 <img width="1172" alt="Screen Shot 2022-05-16 at 6 33 51 PM" src="https://user-images.githubusercontent.com/57721845/168693787-92ae2839-6e9f-462f-88ae-8683a18ef8be.png">
 
+Having second thoughts about that answer...
 <img width="1240" alt="Screen Shot 2022-05-16 at 5 42 00 PM" src="https://user-images.githubusercontent.com/57721845/168687292-5bc4b1a0-e560-4cbf-9763-64331ab9e57a.png">
 
+Let me hit EDIT and fix that before he sees.
 <img width="699" alt="Screen Shot 2022-05-16 at 5 49 52 PM" src="https://user-images.githubusercontent.com/57721845/168693499-0e16c914-9532-4671-a802-a769f139889e.png">
 
+He'll never know... He'll never know.
 <img width="707" alt="Screen Shot 2022-05-16 at 5 49 58 PM" src="https://user-images.githubusercontent.com/57721845/168693524-bcdc8598-8e2f-4bca-b3fb-cbd85c744ba7.png">
 
 
