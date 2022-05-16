@@ -64,7 +64,7 @@ Mysql2, node.js, nodemon, express.js, and JavaScript were used on the backend, w
 
 # ERD
 
-<img width="582" alt="Screen Shot 2022-05-16 at 6 20 45 PM" src="https://user-images.githubusercontent.com/57721845/168691856-ea424710-c329-4cd4-8a5f-175bc4d79f05.png">
+<img width="564" alt="Screen Shot 2022-05-16 at 6 23 25 PM" src="https://user-images.githubusercontent.com/57721845/168692165-8264a1ab-f6c1-46a6-8ad5-3358ed10ec21.png">
 
 # How to download & use:
 
