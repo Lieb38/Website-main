@@ -79,6 +79,18 @@ To run the project, initialize the server with node by entering npm run dev.
 
 <img width="1240" alt="Screen Shot 2022-05-16 at 5 42 00 PM" src="https://user-images.githubusercontent.com/57721845/168687292-5bc4b1a0-e560-4cbf-9763-64331ab9e57a.png">
 
+<img width="857" alt="Screen Shot 2022-05-16 at 6 34 16 PM" src="https://user-images.githubusercontent.com/57721845/168693825-5e254d18-13aa-4fea-a22e-f8f44bda948e.png">
+
+<img width="782" alt="Screen Shot 2022-05-16 at 5 49 07 PM" src="https://user-images.githubusercontent.com/57721845/168693451-b33ab7a7-e761-4226-bd10-eacbb568cfe6.png">
+
+<img width="699" alt="Screen Shot 2022-05-16 at 5 49 52 PM" src="https://user-images.githubusercontent.com/57721845/168693499-0e16c914-9532-4671-a802-a769f139889e.png">
+
+<img width="707" alt="Screen Shot 2022-05-16 at 5 49 58 PM" src="https://user-images.githubusercontent.com/57721845/168693524-bcdc8598-8e2f-4bca-b3fb-cbd85c744ba7.png">
+
+<img width="1203" alt="Screen Shot 2022-05-16 at 6 30 16 PM" src="https://user-images.githubusercontent.com/57721845/168693540-66e4e3dc-fddd-4cc5-b393-682d6acca777.png">
+
+<img width="1172" alt="Screen Shot 2022-05-16 at 6 33 51 PM" src="https://user-images.githubusercontent.com/57721845/168693787-92ae2839-6e9f-462f-88ae-8683a18ef8be.png">
+
 
 
 
