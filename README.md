@@ -1,5 +1,6 @@
 # Website-main
-#Questions:
+
+## Questions:
 
 Questions is a section of my personal website in which visitors may ask me any question they like, and I or another user is able to post a response. To ask a question a visitor must first log in. Once logged in, questions can be asked through a textbox interface on the page. When the user hits submit a blurb will appear on the page with the name of the user followed by "asks..." and the text of the question they had previously typed. This blurb in turn contains buttons to reply, edit, and delete. Users can hit reply and and submit and answer which will populate a blurb within the question blurb with the responding user's name and answer text.
 
